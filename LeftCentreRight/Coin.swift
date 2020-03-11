@@ -59,4 +59,15 @@ enum Coin: Double {
         return "a \(self.name) worth \(self.worthDescription)"
     }
     
+    //mass of the coin in grams
+    var massInGrams : Double {
+        switch self {
+        case .toonie: return 6.92
+        case .loonie: return 6.27
+        case .quarter: return 4.4
+        case .dime: return 1.75
+        case .nickel: return 3.95
+        }
+    }
+    
 }

@@ -31,6 +31,32 @@ enum Coin: Double {
     static var mostValuableCoin : Coin {
         return .toonie
     }
-
+    
+    //computed value for the name of the coin as a string
+    var name : String {
+        switch self {
+        case .toonie: return "toonie"
+        case .loonie: return "loonie"
+        case .quarter: return "quarter"
+        case .dime: return "dime"
+        case .nickel: return "nickel"
+        }
+    }
+    
+    //computed value for the worth of a coin as a string
+    var worthDescription : String {
+        switch self {
+        case .toonie: return "$2.00"
+        case .loonie: return "$1.00"
+        case .quarter: return "$0.25"
+        case .dime: return "$0.10"
+        case .nickel: return "$0.05"
+        }
+    }
+    
+    //description of the coin and its value
+    var description : String {
+        return "a \(self.name) worth \(self.worthDescription)"
+    }
     
 }

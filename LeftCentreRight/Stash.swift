@@ -58,4 +58,22 @@ class Stash {
         return biggest
     }
     
+    //function to move all coins in a stash to another stash
+    func moveAllContentsTo(destination: Stash) {
+        destination.collectionOfCoins.append(contentsOf: self.collectionOfCoins)
+        self.collectionOfCoins.removeAll()
+    }
+    
+    //function that rearranges the contents of a stash in a random order
+    func randomizeCoins() {
+        for _ in 1...(self.collectionOfCoins.count * 20) {
+            
+            //only run if there is more than 1 coin in the stash
+            if self.collectionOfCoins.count > 1 {
+                self.collectionOfCoins.insert(self.collectionOfCoins[0], at: Int.random(in: 1...self.collectionOfCoins.count))
+                self.collectionOfCoins.remove(at: 0)
+            }
+        }
+    }
+    
 }

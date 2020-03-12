@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  Stash.swift
 //  LeftCentreRight
 //
 //  Created by Davidson, Liam on 2020-03-11.
@@ -7,4 +7,7 @@
 //
 
 import Foundation
-print("Hello, world!")
+
+struct Stash {
+    var collectionOfCoins : [Coin]
+}

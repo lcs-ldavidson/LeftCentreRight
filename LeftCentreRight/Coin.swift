@@ -70,4 +70,24 @@ enum Coin: Double {
         }
     }
     
+    //premade collection of coins for wealthy players
+    static var wealthyCollection : [Coin] {
+        return Array(repeatElement(Coin.quarter, count: 5)) + Array(repeatElement(Coin.loonie, count: 4)) + Array(repeatElement(Coin.toonie, count: 3))
+    }
+    
+    //premade collection of coins for middle class players
+    static var standardCollection : [Coin] {
+        return Array(repeatElement(Coin.dime, count: 5)) + Array(repeatElement(Coin.quarter, count: 4)) + Array(repeatElement(Coin.loonie, count: 3))
+    }
+    
+    //premade collection of coins for poor players
+    static var poorCollection : [Coin] {
+        return Array(repeatElement(Coin.nickel, count: 5)) + Array(repeatElement(Coin.dime, count: 4)) + Array(repeatElement(Coin.quarter, count: 3))
+    }
+    
+    //function to create and return an array of coins made up of the specified coins
+    static func stashMadeOf(Nickels: Int, Dimes: Int, Quarters: Int, Loonies: Int, Toonies: Int) -> [Coin] {
+        return Array(repeatElement(Coin.nickel, count: Nickels)) + Array(repeatElement(Coin.dime, count: Dimes)) + Array(repeatElement(Coin.quarter, count: Quarters)) + Array(repeatElement(Coin.loonie, count: Loonies)) + Array(repeatElement(Coin.toonie, count: Toonies))
+    }
+    
 }

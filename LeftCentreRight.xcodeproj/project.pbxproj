@@ -11,6 +11,7 @@
 		9E95DFBC2419A04D00D42477 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFBB2419A04D00D42477 /* Coin.swift */; };
 		D333F7902419A23A009ECFB4 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333F78F2419A23A009ECFB4 /* Die.swift */; };
 		D333F7922419A273009ECFB4 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333F7912419A273009ECFB4 /* Side.swift */; };
+		9E95DFBE2419AB4F00D42477 /* Stash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFBD2419AB4F00D42477 /* Stash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		9E95DFBB2419A04D00D42477 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		D333F78F2419A23A009ECFB4 /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		D333F7912419A273009ECFB4 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
+		9E95DFBD2419AB4F00D42477 /* Stash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				D333F78F2419A23A009ECFB4 /* Die.swift */,
 				D333F7912419A273009ECFB4 /* Side.swift */,
 				9E95DFBB2419A04D00D42477 /* Coin.swift */,
+				9E95DFBD2419AB4F00D42477 /* Stash.swift */,
 			);
 			path = LeftCentreRight;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 				9E95DFB524199F9800D42477 /* main.swift in Sources */,
 				D333F7922419A273009ECFB4 /* Side.swift in Sources */,
 				D333F7902419A23A009ECFB4 /* Die.swift in Sources */,
+				9E95DFBE2419AB4F00D42477 /* Stash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

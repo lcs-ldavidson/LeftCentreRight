@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+//class for a player
+class Player {
+    
+    //properties
+    var collection : Stash
+    var name : String
+    
+    //initializer
+    init(collection: Stash, name: String) {
+        self.collection = collection
+        self.name = name
+    }
+    
+}
+
+

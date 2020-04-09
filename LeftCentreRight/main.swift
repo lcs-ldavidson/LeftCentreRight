@@ -9,10 +9,11 @@
 import Foundation
 
 //structure to represent the table at which the players...play
-struct Table {
+struct Game {
     
     var players : [Player]
     var currentTurnPlayer : Player
+    var centrePot : Stash = Stash(initialCoins: [])
     
     
 }

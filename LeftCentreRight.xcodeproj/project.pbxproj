@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E3BD230243FE14F008A31C5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BD22F243FE14F008A31C5 /* Player.swift */; };
+		9E3BD232243FE832008A31C5 /* FriendGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BD231243FE832008A31C5 /* FriendGroup.swift */; };
 		9E95DFB524199F9800D42477 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFB424199F9800D42477 /* main.swift */; };
 		9E95DFBC2419A04D00D42477 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFBB2419A04D00D42477 /* Coin.swift */; };
 		9E95DFBE2419AB4F00D42477 /* Stash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFBD2419AB4F00D42477 /* Stash.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		9E3BD22F243FE14F008A31C5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		9E3BD231243FE832008A31C5 /* FriendGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendGroup.swift; sourceTree = "<group>"; };
 		9E95DFB124199F9800D42477 /* LeftCentreRight */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeftCentreRight; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E95DFB424199F9800D42477 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9E95DFBB2419A04D00D42477 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				9E95DFBB2419A04D00D42477 /* Coin.swift */,
 				9E95DFBD2419AB4F00D42477 /* Stash.swift */,
 				9E3BD22F243FE14F008A31C5 /* Player.swift */,
+				9E3BD231243FE832008A31C5 /* FriendGroup.swift */,
 			);
 			path = LeftCentreRight;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				D333F7922419A273009ECFB4 /* Side.swift in Sources */,
 				D333F7902419A23A009ECFB4 /* Die.swift in Sources */,
 				9E3BD230243FE14F008A31C5 /* Player.swift in Sources */,
+				9E3BD232243FE832008A31C5 /* FriendGroup.swift in Sources */,
 				9E95DFBE2419AB4F00D42477 /* Stash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

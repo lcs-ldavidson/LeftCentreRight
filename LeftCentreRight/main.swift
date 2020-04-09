@@ -8,6 +8,11 @@
 
 import Foundation
 
+//structure to represent the table at which the players...play
 struct Table {
+    
+    var players : [Player]
+    var currentTurnPlayer : Player
+    
     
 }

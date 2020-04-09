@@ -14,6 +14,7 @@ class Player {
     //properties
     var collection : Stash
     var name : String
+    var field: Stash = Stash(initialCoins: [])
     
     //initializer
     init(collection: Stash, name: String) {

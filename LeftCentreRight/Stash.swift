@@ -64,6 +64,31 @@ class Stash {
         self.collectionOfCoins.removeAll()
     }
     
+    //function to move designated coins to another stash
+    func moveCoinsTo(destination: Stash, howManyCoins: Int) {
+        
+        //create a variable to help keep track of whether the first stash still has enough coins to give to the second
+        var coinsLeftToMove = howManyCoins
+        
+        //loop the number of times needed to move all coins
+        for _ in 1...howManyCoins {
+            
+            if collectionOfCoins.count >= coinsLeftToMove {
+                //give the coins
+                destination.collectionOfCoins.append(self.collectionOfCoins.first!)
+                
+                //remove the coins
+                self.collectionOfCoins.removeFirst()
+                
+                //decrease the coins left to give
+                coinsLeftToMove -= 1
+            } else {
+                //if the stash no longer has coins to give
+                print("Initial stash has run out of coins.")
+            }
+        }
+    }
+    
     //function that rearranges the contents of a stash in a random order
     func randomizeCoins() {
         for _ in 1...(self.collectionOfCoins.count * 20) {

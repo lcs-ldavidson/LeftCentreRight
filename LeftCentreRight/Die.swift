@@ -9,6 +9,7 @@
 import Foundation
 
 struct Dice {
+    
     var die : [Side] {
         return [.dot, .dot, .dot, .left, .centre, .right]
     }

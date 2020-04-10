@@ -84,6 +84,8 @@ struct LCRGame {
             //Check to see if the player has money, if yes the turn may continue
             if checkIfPlayerHasMoney() == false {
                 passTurn()
+            } else if checkIfPlayerHasMoney() == true {
+                
             }
         }
     }

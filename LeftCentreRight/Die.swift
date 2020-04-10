@@ -10,16 +10,21 @@ import Foundation
 
 struct Dice {
     
-    var die : [Side] {
+    static var die : [Side] {
         return [.dot, .dot, .dot, .left, .centre, .right]
     }
     
-    func roll() -> String {
-        if let randomSide = die.randomElement() {
-            print(randomSide)
-            return(randomSide.rawValue)
-        }
-        return roll()
+    static func roll() -> Side {
+        
+        var rolledSide : Side
+        
+        rolledSide = die.randomElement()!
+        return rolledSide
+//        if let randomSide = die.randomElement() {
+//            print(randomSide)
+//            return(randomSide.rawValue)
+//        }
+//        return roll()
     }
 }
 

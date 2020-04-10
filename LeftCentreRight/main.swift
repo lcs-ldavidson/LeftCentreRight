@@ -15,6 +15,7 @@ struct LCRGame {
     var players : FriendGroup
     var currentTurnPlayer : Player
     var centrePot : Stash = Stash(initialCoins: [])
+    var gameIsOngoing : Bool = true
     
     //initializer so the game can automatically determine that the first one to play is the poorest player
     init(whoIsPlaying players: FriendGroup) {
@@ -53,11 +54,18 @@ struct LCRGame {
     //function to setup the game by moving coins into the players' fields
     func setup() {
         for setupPlayer in players.group {
+            setupPlayer.collection.randomizeCoins()
             setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
         }
     }
     
-    
+    func playTurn() {
+        if gameIsOngoing {
+            for i in 1...currentTurnPlayer.diceToRoll() {
+                
+            }
+        }
+    }
     
 }
 

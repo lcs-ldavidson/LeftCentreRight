@@ -40,4 +40,13 @@ struct LCRGame {
         }
         
     }
+    
+    //function to swap the current turn player to the next in sequence
+    mutating func passTurn() {
+        if players.findIndexOfPlayer(targetPlayer: currentTurnPlayer) == players.group.count - 1 {
+            currentTurnPlayer = players.group[0]
+        } else {
+            currentTurnPlayer = players.group[players.findIndexOfPlayer(targetPlayer: currentTurnPlayer) + 1]
+        }
+    }
 }

@@ -50,4 +50,15 @@ struct FriendGroup {
         return description
     }
     
+    //function to find the index of a player to locate them at the table
+    func findIndexOfPlayer(targetPlayer: Player) -> Int {
+        var foundPlayerIndex : Int = 0
+        for i in 0...(group.count - 1) {
+            if group[i] === targetPlayer {
+                foundPlayerIndex = i
+            }
+        }
+        return foundPlayerIndex
+    }
+    
 }

@@ -61,4 +61,32 @@ struct FriendGroup {
         return foundPlayerIndex
     }
     
+    //function to return a reference to the player on the right of specified player
+    func getPlayerToTheRight(of basePlayer: Player) -> Player {
+        
+        var index : Int
+        
+        if findIndexOfPlayer(targetPlayer: basePlayer) == group.count - 1 {
+            index = 0
+        } else {
+            index = findIndexOfPlayer(targetPlayer: basePlayer) + 1
+        }
+        var playerToTheRight = group[index]
+        return playerToTheRight
+    }
+    
+    //function to return the player on the left
+    func getPlayerToTheLeft(of basePlayer: Player) -> Player {
+        
+        var index : Int
+        
+        if findIndexOfPlayer(targetPlayer: basePlayer) == 0 {
+            index = group.count - 1
+        } else {
+            index = findIndexOfPlayer(targetPlayer: basePlayer) - 1
+        }
+        var playerToTheLeft = group[index]
+        return playerToTheLeft
+    }
+    
 }

@@ -49,4 +49,16 @@ struct LCRGame {
             currentTurnPlayer = players.group[players.findIndexOfPlayer(targetPlayer: currentTurnPlayer) + 1]
         }
     }
+    
+    //function to setup the game by moving coins into the players' fields
+    func setup() {
+        for setupPlayer in players.group {
+            setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
+        }
+    }
+    
+    
+    
 }
+
+

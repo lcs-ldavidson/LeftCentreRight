@@ -21,6 +21,7 @@ struct Dice {
         
         var rolledSide : Side
         
+        //Chooses a random side of the die to return
         rolledSide = die.randomElement()!
         return rolledSide
         //        if let randomSide = die.randomElement() {

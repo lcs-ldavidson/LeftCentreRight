@@ -33,6 +33,9 @@ class Stash {
         var description = ""
         for coin in collectionOfCoins {
             description += coin.description
+            description += """
+            
+            """
         }
         return description
     }

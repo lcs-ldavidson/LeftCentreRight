@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Create an enumeration with the different sides of the die
 enum Side: String {
     case dot 
     case left

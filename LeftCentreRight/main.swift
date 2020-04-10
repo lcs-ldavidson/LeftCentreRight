@@ -59,25 +59,31 @@ struct LCRGame {
         }
     }
     
-    //Create a function to see if someone has lost all their money
-    mutating func checkIfPlayerHasMoney () {
+    //Crate a function to see if someone has money
+    mutating func checkIfPlayerHasMoney() -> Bool {
         
-        //Check to see if the current player field has any coins
-        if gameIsOngoing {
-            if currentTurnPlayer.field.collectionOfCoins.count <= 0 {
-                print("The player \(currentTurnPlayer.name) has no coins")
-                
-                //If the player has coins, print how many they have
-            } else if currentTurnPlayer.field.collectionOfCoins.count > 0 {
-                print("The player \(currentTurnPlayer.name) has \(currentTurnPlayer.field.collectionOfCoins) coins")
-            }
+        //Create variable to see if the player can proceed with the turn
+        var keepOnGoing: Bool = false
+        
+        //Check to see if the player has more than zero coins
+        if currentTurnPlayer.field.collectionOfCoins.count > 0 {
+            print("The player \(currentTurnPlayer.name) has \(currentTurnPlayer.field.collectionOfCoins) coins")
+            keepOnGoing = true
+            
+            //Check to see if the player has zero coins
+        } else if currentTurnPlayer.field.collectionOfCoins.count <= 0 {
+            print("The player \(currentTurnPlayer.name) has no coins")
+            keepOnGoing = false
         }
+        return keepOnGoing
     }
     
-    func playTurn() {
-        if gameIsOngoing {              
-            for _ in 1...currentTurnPlayer.diceToRoll() {
-                
+    //Function that will run during the current player's turn
+    mutating func playTurn() {
+        if gameIsOngoing {
+            //Check to see if the player has money, if yes the turn may continue
+            if checkIfPlayerHasMoney() == false {
+                passTurn()
             }
         }
     }

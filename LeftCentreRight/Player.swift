@@ -38,7 +38,7 @@ class Player {
         
         var number : Int = 0
         
-        //If the player has 1 coin, they roll once. If the player has 3 or more coins, it rolls 3 times
+        //If the player has 1 coin, they roll once. If the player has 3 or more coins, they roll 3 times
         if field.collectionOfCoins.count <= 0 {
             number = 0
         } else if field.collectionOfCoins.count == 1 || field.collectionOfCoins.count == 2 || field.collectionOfCoins.count == 3 {

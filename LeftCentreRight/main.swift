@@ -24,8 +24,10 @@ struct LCRGame {
     }
     
     //the function to begin playing the game
-    func playLCR() {
-        
+    mutating func playLCR() {
+        while gameIsOngoing {
+            playTurn()
+        }
     }
     
     //initial description of the game
@@ -56,17 +58,84 @@ struct LCRGame {
         for setupPlayer in players.group {
             setupPlayer.collection.randomizeCoins()
             setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
+            print("""
+                \(setupPlayer.name) moves 3 coins onto their field. They place
+                \(setupPlayer.field.stashDescription)
+                The total worth of \(setupPlayer.name)'s starting field is $\(setupPlayer.field.totalMonetaryValue)!
+                """)
         }
     }
     
-    func playTurn() {
-        if gameIsOngoing {
+    mutating func playTurn() {
+        if currentTurnPlayer.hasCoinsInField {
+            
+            //roll the dice and determine the outcome
             for i in 1...currentTurnPlayer.diceToRoll() {
+                var rolledSide = Dice.roll()
                 
+                switch rolledSide {
+                case .dot:
+                    print("\(currentTurnPlayer.name) rolled a '•'. Nothing happens!")
+                    
+                case .centre:
+                    print("\(currentTurnPlayer.name) rolled a 'C'. They give up one coin to the centre!It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    currentTurnPlayer.field.moveCoinsTo(destination: centrePot, howManyCoins: 1)
+                    
+                case .left:
+                    print("\(currentTurnPlayer.name) rolled an 'L'. They give up one coin \(players.getPlayerToTheLeft(of: currentTurnPlayer).name) on their left! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    currentTurnPlayer.field.moveCoinsTo(destination: players.getPlayerToTheLeft(of: currentTurnPlayer).field, howManyCoins: 1)
+                    
+                case .right:
+                    print("\(currentTurnPlayer.name) rolled an 'R'. They give up one coin \(players.getPlayerToTheRight(of: currentTurnPlayer).name) on their right! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    currentTurnPlayer.field.moveCoinsTo(destination: players.getPlayerToTheRight(of: currentTurnPlayer).field, howManyCoins: 1)
+                default:
+                    print("Something had gone wrong when rolling the die.")
+                }
             }
         }
+        
+        //check if you win
+        var playersWithCoins : [Player] = []
+        
+        for checkingPlayer in players.group {
+            if checkingPlayer.hasCoinsInField {
+                playersWithCoins.append(checkingPlayer)
+            }
+        }
+        
+        //check if the list of players with coins only has one person in it, and if that player is you, you have won!
+        if arrayOfPlayersContains(arrayToCheck: playersWithCoins, playerToCheckFor: currentTurnPlayer) && playersWithCoins.count == 1 {
+            gameIsOngoing = false
+        }
+        
+        //pass the turn to the next player if current player did not just win
+        if gameIsOngoing {
+            passTurn()
+        }
+    }
+    
+    //static function to return a bool indicating whether a given array of players includes a given player
+    func arrayOfPlayersContains(arrayToCheck: [Player], playerToCheckFor: Player) -> Bool {
+        var doesItContain : Bool = false
+        for checkingPlayer in arrayToCheck {
+            if checkingPlayer === playerToCheckFor {
+                doesItContain = true
+            }
+        }
+        return doesItContain
     }
     
 }
 
+//sample game
+
+var Liam = Player(collection: Stash(initialCoins: Coin.wealthyCollection), name: "Liam")
+var Julio = Player(collection: Stash(initialCoins: Coin.poorCollection), name: "Julio")
+var Gordon = Player(collection: Stash(initialCoins: Coin.standardCollection), name: "Mr. Gordon")
+
+var ourClass = FriendGroup(group: [Liam, Julio, Gordon])
+
+var epicShowdown = LCRGame(whoIsPlaying: ourClass)
+
+epicShowdown.playLCR()
 

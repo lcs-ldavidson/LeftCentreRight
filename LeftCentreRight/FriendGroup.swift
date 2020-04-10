@@ -89,4 +89,6 @@ struct FriendGroup {
         return playerToTheLeft
     }
     
+    
+    
 }

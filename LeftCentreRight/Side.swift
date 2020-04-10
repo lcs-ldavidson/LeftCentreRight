@@ -9,6 +9,7 @@
 import Foundation
 
 // Create an enumeration with the different sides of the die
+//The die has three dots, one left, one centre and one right
 enum Side: String {
     case dot 
     case left

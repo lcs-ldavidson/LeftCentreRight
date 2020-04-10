@@ -24,8 +24,8 @@ struct LCRGame {
     }
     
     //the function to begin playing the game
-    func playLCR() {
-        
+    mutating func playLCR() {
+        self.gameIsOngoing = true
     }
     
     //initial description of the game
@@ -59,9 +59,24 @@ struct LCRGame {
         }
     }
     
-    func playTurn() {
+    //Create a function to see if someone has lost all their money
+    mutating func checkIfPlayerHasMoney () {
+        
+        //Check to see if the current player field has any coins
         if gameIsOngoing {
-            for i in 1...currentTurnPlayer.diceToRoll() {
+            if currentTurnPlayer.field.collectionOfCoins.count <= 0 {
+                print("The player \(currentTurnPlayer.name) has no coins")
+                
+                //If the player has coins, print how many they have
+            } else if currentTurnPlayer.field.collectionOfCoins.count > 0 {
+                print("The player \(currentTurnPlayer.name) has \(currentTurnPlayer.field.collectionOfCoins) coins")
+            }
+        }
+    }
+    
+    func playTurn() {
+        if gameIsOngoing {              
+            for _ in 1...currentTurnPlayer.diceToRoll() {
                 
             }
         }

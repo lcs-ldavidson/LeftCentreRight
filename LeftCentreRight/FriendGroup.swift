@@ -16,6 +16,7 @@ struct FriendGroup {
     var mostWealthyPlayer : Player {
         var richest = group[1]
         
+        //The richest player changes depending on who has the most money
         for potentiallyRichPlayer in group {
             if potentiallyRichPlayer.collection.totalMonetaryValue > richest.collection.totalMonetaryValue {
                 richest = potentiallyRichPlayer
@@ -28,6 +29,7 @@ struct FriendGroup {
     var mostPoorPlayer : Player {
         var poorest = group[1]
         
+        //The poorest player changes depending on who has the least money
         for potentiallyRichPlayer in group {
             if potentiallyRichPlayer.collection.totalMonetaryValue < poorest.collection.totalMonetaryValue {
                 poorest = potentiallyRichPlayer
@@ -36,9 +38,11 @@ struct FriendGroup {
         return poorest
     }
     
+    //Variable for the name of the players of type String
     var namesOfAllPlayers : String {
         var description = ""
         
+        //Loop for description of the people playing
         for i in 1...group.count {
             description += "\(group[i].name)"
             if i < (group.count - 1) {
@@ -50,7 +54,7 @@ struct FriendGroup {
         return description
     }
     
-    //function to find the index of a player to locate them at the table
+    //function to find the index of a player to locate them at the table 
     func findIndexOfPlayer(targetPlayer: Player) -> Int {
         var foundPlayerIndex : Int = 0
         for i in 0...(group.count - 1) {
@@ -88,7 +92,4 @@ struct FriendGroup {
         var playerToTheLeft = group[index]
         return playerToTheLeft
     }
-    
-    
-    
 }

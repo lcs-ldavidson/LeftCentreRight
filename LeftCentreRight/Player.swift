@@ -15,6 +15,17 @@ class Player {
     var collection : Stash
     var name : String
     var field: Stash = Stash(initialCoins: [])
+    var hasCoinsInField : Bool {
+        
+        var hasCoins : Bool
+        
+        if field.collectionOfCoins.count > 0 {
+            hasCoins = true
+        } else {
+            hasCoins = false
+        }
+        return hasCoins
+    }
     
     //initializer
     init(collection: Stash, name: String) {
@@ -22,6 +33,7 @@ class Player {
         self.name = name
     }
     
+    //function to return how many dice should be rolled depending on coins in field
     func diceToRoll() -> Int {
         
         var number : Int = 0

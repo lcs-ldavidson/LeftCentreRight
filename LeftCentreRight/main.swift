@@ -70,8 +70,8 @@ struct LCRGame {
         if currentTurnPlayer.hasCoinsInField {
             
             //roll the dice and determine the outcome
-            for i in 1...currentTurnPlayer.diceToRoll() {
-                var rolledSide = Dice.roll()
+            for _ in 1...currentTurnPlayer.diceToRoll() {
+                let rolledSide = Dice.roll()
                 
                 switch rolledSide {
                 case .dot:
@@ -137,5 +137,5 @@ var ourClass = FriendGroup(group: [Liam, Julio, Gordon])
 
 var epicShowdown = LCRGame(whoIsPlaying: ourClass)
 
-epicShowdown.playLCR() 
+epicShowdown.playLCR()
 

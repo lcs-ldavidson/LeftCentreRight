@@ -25,8 +25,9 @@ struct LCRGame {
     
     //the function to begin playing the game
     mutating func playLCR() {
-        setup()
         openingDescriptions()
+        setup()
+        
         while gameIsOngoing {
             playTurn()
         }
@@ -36,12 +37,15 @@ struct LCRGame {
     func openingDescriptions() {
         print("""
             Welcome to Left Centre Right!
+            
             This game will be played by \(players.namesOfAllPlayers). \(players.mostWealthyPlayer.name) is the wealthiest player, for their stash is worth $\(players.mostWealthyPlayer.collection.totalMonetaryValue).
+            
             \(players.mostPoorPlayer.name) is the poorest player, only having $\(players.mostPoorPlayer.collection.totalMonetaryValue), and therefore must go first.
+            
             """)
         
         for describingPlayer in players.group {
-            print("\(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). Their stash is made up of \(describingPlayer.collection.stashDescription).")
+            print("\(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). Their stash is made up of \(describingPlayer.collection.stashDescription)")
         }
         
     }
@@ -61,9 +65,8 @@ struct LCRGame {
             setupPlayer.collection.randomizeCoins()
             setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
             print("""
-                \(setupPlayer.name) moves 3 coins onto their field. They place
-                \(setupPlayer.field.stashDescription)
-                The total worth of \(setupPlayer.name)'s starting field is $\(setupPlayer.field.totalMonetaryValue)!
+                \(setupPlayer.name) moves 3 coins onto their field. They place \(setupPlayer.field.stashDescription)
+                
                 """)
         }
     }

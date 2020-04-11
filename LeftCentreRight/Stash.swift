@@ -30,13 +30,14 @@ class Stash {
     
     //returns a description of each coin in the stash
     var stashDescription : String {
-        var description = ""
+        var description = "\n"
         for coin in collectionOfCoins {
             description += coin.description
-            description += """
-            
-            """
+            description += "\n"
         }
+        
+        description += "Total worth: $\(totalMonetaryValue) \n"
+        
         return description
     }
     

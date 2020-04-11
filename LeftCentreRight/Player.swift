@@ -26,11 +26,13 @@ class Player {
         }
         return hasCoins
     }
+    var initialWealth : Double
     
     //initializer
     init(collection: Stash, name: String) {
         self.collection = collection
         self.name = name
+        self.initialWealth = collection.totalMonetaryValue
     }
     
     //function to return how many dice should be rolled depending on coins in field

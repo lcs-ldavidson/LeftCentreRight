@@ -31,6 +31,9 @@ struct LCRGame {
         while gameIsOngoing {
             playTurn()
         }
+        
+        declareWinner(winner: currentTurnPlayer)
+        
     }
     
     //initial description of the game
@@ -72,6 +75,10 @@ struct LCRGame {
     }
     
     mutating func playTurn() {
+        
+        //start of turn stats
+        print("It is \(currentTurnPlayer.name)'s turn. They currently have \(currentTurnPlayer.field.collectionOfCoins.count) coins in their field and must roll \(currentTurnPlayer.diceToRoll()) dice.")
+        
         if currentTurnPlayer.hasCoinsInField {
             
             //roll the dice and determine the outcome
@@ -83,21 +90,26 @@ struct LCRGame {
                     print("\(currentTurnPlayer.name) rolled a '•'. Nothing happens!")
                     
                 case .centre:
-                    print("\(currentTurnPlayer.name) rolled a 'C'. They give up one coin to the centre!It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    print("\(currentTurnPlayer.name) rolled a 'C'. They give up one coin to the centre! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
                     currentTurnPlayer.field.moveCoinsTo(destination: centrePot, howManyCoins: 1)
                     
                 case .left:
-                    print("\(currentTurnPlayer.name) rolled an 'L'. They give up one coin \(players.getPlayerToTheLeft(of: currentTurnPlayer).name) on their left! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    print("\(currentTurnPlayer.name) rolled an 'L'. They give up one coin to \(players.getPlayerToTheLeft(of: currentTurnPlayer).name) on their left! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
                     currentTurnPlayer.field.moveCoinsTo(destination: players.getPlayerToTheLeft(of: currentTurnPlayer).field, howManyCoins: 1)
                     
                 case .right:
-                    print("\(currentTurnPlayer.name) rolled an 'R'. They give up one coin \(players.getPlayerToTheRight(of: currentTurnPlayer).name) on their right! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    print("\(currentTurnPlayer.name) rolled an 'R'. They give up one coin to \(players.getPlayerToTheRight(of: currentTurnPlayer).name) on their right! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
                     currentTurnPlayer.field.moveCoinsTo(destination: players.getPlayerToTheRight(of: currentTurnPlayer).field, howManyCoins: 1)
                 default:
                     print("Something had gone wrong when rolling the die.")
                 }
             }
+            
         }
+        
+        print("\(currentTurnPlayer.name) now has \(currentTurnPlayer.field.collectionOfCoins.count) coins in their field.")
+        addDevider()
+        
         
         //check if you win
         var playersWithCoins : [Player] = []
@@ -128,6 +140,28 @@ struct LCRGame {
             }
         }
         return doesItContain
+    }
+    
+    //addsa devided to make things easier to read
+    func addDevider() {
+        print("\n====================\n")
+    }
+    
+    //print a series of statements about the winner
+    func declareWinner(winner: Player) {
+     
+        //declare winning stats
+        print("""
+            \(winner.name) is the winner! They won the entire centre pot, which contains \(centrePot.stashDescription)
+            """)
+        
+        //give winnings
+        centrePot.moveAllContentsTo(destination: winner.collection)
+        winner.field.moveAllContentsTo(destination: winner.collection)
+        
+        print("""
+            \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, they made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
+            """)
     }
     
 }

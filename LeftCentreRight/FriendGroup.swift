@@ -43,7 +43,7 @@ struct FriendGroup {
         var description = ""
         
         //Loop for description of the people playing
-        for i in 1...group.count {
+        for i in 0...group.count - 1 {
             description += "\(group[i].name)"
             if i < (group.count - 1) {
                 description += ", "

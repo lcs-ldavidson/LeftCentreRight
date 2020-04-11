@@ -25,6 +25,8 @@ struct LCRGame {
     
     //the function to begin playing the game
     mutating func playLCR() {
+        setup()
+        openingDescriptions()
         while gameIsOngoing {
             playTurn()
         }

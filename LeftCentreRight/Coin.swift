@@ -11,7 +11,7 @@ import Foundation
 //Coin enumeration
 enum Coin: Double {
     
-    //all the possible coins with values as rawValues
+    //All the possible coins with values as rawValues
     case toonie = 2.00, loonie = 1.00, quarter = 0.25, dime = 0.10, nickel = 0.05
     
     //computed value for the monetary value of each coin to make things more readable

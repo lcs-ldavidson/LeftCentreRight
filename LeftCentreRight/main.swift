@@ -137,5 +137,5 @@ var ourClass = FriendGroup(group: [Liam, Julio, Gordon])
 
 var epicShowdown = LCRGame(whoIsPlaying: ourClass)
 
-epicShowdown.playLCR()
+epicShowdown.playLCR() 
 

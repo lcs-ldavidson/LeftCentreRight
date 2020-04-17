@@ -16,6 +16,7 @@ struct LCRGame {
     var currentTurnPlayer : Player
     var centrePot : Stash = Stash(initialCoins: [])
     var gameIsOngoing : Bool = true
+    var interactiveMode : Bool = true
     
     //initializer so the game can automatically determine that the first one to play is the poorest player
     init(whoIsPlaying players: FriendGroup) {
@@ -48,18 +49,20 @@ struct LCRGame {
             
             3) The dice are made up from 3 dots, 1 L, 1 C, 1 R
             
-            4) Keep coins with a dot, give coin(s) to player on left with L, give coin(s) to the centre pot with C, & give coins to player on right with R
-            
+            4) A dot means you keep your coin. An L means you give your coin to the player on your left. A C means you give your coin to the centre pot. An R means you give your coin to the player on your right
+            \n====================\n
             This game will be played by \(players.namesOfAllPlayers). \(players.mostWealthyPlayer.name) is the wealthiest player, for their stash is worth $\(players.mostWealthyPlayer.collection.totalMonetaryValue).
             
             \(players.mostPoorPlayer.name) is the poorest player, only having $\(players.mostPoorPlayer.collection.totalMonetaryValue), and therefore must go first.
             
             """)
         
+        waitForUserInput()
+        
         for describingPlayer in players.group {
             print("\(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). Their stash is made up of \(describingPlayer.collection.stashDescription)")
+             waitForUserInput()
         }
-        
     }
     
     //function to swap the current turn player to the next in sequence
@@ -77,16 +80,24 @@ struct LCRGame {
             setupPlayer.collection.randomizeCoins()
             setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
             print("""
-                \(setupPlayer.name) moves 3 coins onto their field. They place \(setupPlayer.field.stashDescription)
                 
+                \(setupPlayer.name) moves 3 coins onto their field. They place \(setupPlayer.field.stashDescription)
                 """)
+            waitForUserInput()
         }
     }
     
     mutating func playTurn() {
         
         //start of turn stats
-        print("It is \(currentTurnPlayer.name)'s turn. They currently have \(currentTurnPlayer.field.collectionOfCoins.count) coins in their field and must roll \(currentTurnPlayer.diceToRoll()) dice.")
+        print("""
+            
+            It is \(currentTurnPlayer.name)'s turn. They currently have \(currentTurnPlayer.field.collectionOfCoins.count) coins in their field and must roll \(currentTurnPlayer.diceToRoll()) dice.
+            
+            """)
+        
+        // Interactive mode, "press ENTER to roll the dice"
+        waitForUserInput()
         
         if currentTurnPlayer.hasCoinsInField {
             
@@ -151,14 +162,14 @@ struct LCRGame {
         return doesItContain
     }
     
-    //addsa devided to make things easier to read
+    //adds a devider to make things easier to read
     func addDevider() {
         print("\n====================\n")
     }
     
     //print a series of statements about the winner
     func declareWinner(winner: Player) {
-     
+        
         //declare winning stats
         print("""
             \(winner.name) is the winner! They won the entire centre pot, which contains \(centrePot.stashDescription)
@@ -169,8 +180,17 @@ struct LCRGame {
         winner.field.moveAllContentsTo(destination: winner.collection)
         
         //print("""
-           // \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, they made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
-           // """)
+        // \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, they made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
+        // """)
+    }
+    
+    func waitForUserInput() {
+        
+        if interactiveMode {
+            print("Press ENTER to continue...", terminator: "")
+            readLine()
+        }
+        
     }
     
 }

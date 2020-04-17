@@ -41,6 +41,15 @@ struct LCRGame {
         print("""
             Welcome to Left Centre Right!
             
+            The rules are simple:
+            1) Each player needs a minimum of 3 coins
+            
+            2) The amount of dice you roll corresponds to the amount of coins in your stash. If you have 3 or more coins, you roll 3 times
+            
+            3) The dice are made up from 3 dots, 1 L, 1 C, 1 R
+            
+            4) Keep coins with a dot, give coin(s) to player on left with L, give coin(s) to the centre pot with C, & give coins to player on right with R
+            
             This game will be played by \(players.namesOfAllPlayers). \(players.mostWealthyPlayer.name) is the wealthiest player, for their stash is worth $\(players.mostWealthyPlayer.collection.totalMonetaryValue).
             
             \(players.mostPoorPlayer.name) is the poorest player, only having $\(players.mostPoorPlayer.collection.totalMonetaryValue), and therefore must go first.
@@ -159,9 +168,9 @@ struct LCRGame {
         centrePot.moveAllContentsTo(destination: winner.collection)
         winner.field.moveAllContentsTo(destination: winner.collection)
         
-        print("""
-            \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, they made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
-            """)
+        //print("""
+           // \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, they made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
+           // """)
     }
     
 }

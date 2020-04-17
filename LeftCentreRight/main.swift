@@ -50,7 +50,7 @@ struct LCRGame {
             3) The dice are made up from 3 dots, 1 L, 1 C, 1 R
             
             4) A dot means you keep your coin. An L means you give your coin to the player on your left. A C means you give your coin to the centre pot. An R means you give your coin to the player on your right
-            \n====================\n
+            \n====================================================================\n
             This game will be played by \(players.namesOfAllPlayers). \(players.mostWealthyPlayer.name) is the wealthiest player, for their stash is worth $\(players.mostWealthyPlayer.collection.totalMonetaryValue).
             
             \(players.mostPoorPlayer.name) is the poorest player, only having $\(players.mostPoorPlayer.collection.totalMonetaryValue), and therefore must go first.
@@ -58,10 +58,14 @@ struct LCRGame {
             """)
         
         waitForUserInput()
+        print("\n====================================================================\n")
         
         for describingPlayer in players.group {
-            print("\(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). Their stash is made up of \(describingPlayer.collection.stashDescription)")
+            print("""
+                \(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). Their stash is made up of \(describingPlayer.collection.stashDescription)
+                """)
              waitForUserInput()
+            print("\n====================================================================\n")
         }
     }
     
@@ -80,10 +84,10 @@ struct LCRGame {
             setupPlayer.collection.randomizeCoins()
             setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
             print("""
-                
                 \(setupPlayer.name) moves 3 coins onto their field. They place \(setupPlayer.field.stashDescription)
                 """)
             waitForUserInput()
+            print("\n====================================================================\n")
         }
     }
     
@@ -164,7 +168,7 @@ struct LCRGame {
     
     //adds a devider to make things easier to read
     func addDevider() {
-        print("\n====================\n")
+        print("\n====================================================================\n")
     }
     
     //print a series of statements about the winner

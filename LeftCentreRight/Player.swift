@@ -26,12 +26,15 @@ class Player {
         }
         return hasCoins
     }
+    
     var initialWealth : Double
+    var playerGender : Gender
     
     //initializer
-    init(collection: Stash, name: String) {
+    init(collection: Stash, name: String, gender: Gender) {
         self.collection = collection
         self.name = name
+        self.playerGender = gender
         self.initialWealth = collection.totalMonetaryValue
     }
     

@@ -47,11 +47,11 @@ struct LCRGame {
             
             2) The amount of dice you roll corresponds to the amount of coins in your stash. If you have 3 or more coins, you roll 3 times
             
-            3) The dice are made up from 3 dots, 1 L, 1 C, 1 R
+            3) The dice are made up of 3 dots, 1 L, 1 C, 1 R
             
             4) A dot means you keep your coin. An L means you give your coin to the player on your left. A C means you give your coin to the centre pot. An R means you give your coin to the player on your right
             \n====================================================================\n
-            This game will be played by \(players.namesOfAllPlayers). \(players.mostWealthyPlayer.name) is the wealthiest player, for their stash is worth $\(players.mostWealthyPlayer.collection.totalMonetaryValue).
+            This game will be played by \(players.namesOfAllPlayers). \(players.mostWealthyPlayer.name) is the wealthiest player, for \(players.mostWealthyPlayer.playerGender.possessivePronoun) stash is worth $\(players.mostWealthyPlayer.collection.totalMonetaryValue).
             
             \(players.mostPoorPlayer.name) is the poorest player, only having $\(players.mostPoorPlayer.collection.totalMonetaryValue), and therefore must go first.
             
@@ -62,7 +62,7 @@ struct LCRGame {
         
         for describingPlayer in players.group {
             print("""
-                \(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). Their stash is made up of \(describingPlayer.collection.stashDescription)
+                \(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). \(describingPlayer.playerGender.possessivePronoun) stash is made up of \(describingPlayer.collection.stashDescription)
                 """)
              waitForUserInput()
             print("\n====================================================================\n")
@@ -84,7 +84,7 @@ struct LCRGame {
             setupPlayer.collection.randomizeCoins()
             setupPlayer.collection.moveCoinsTo(destination: setupPlayer.field, howManyCoins: 3)
             print("""
-                \(setupPlayer.name) moves 3 coins onto their field. They place \(setupPlayer.field.stashDescription)
+                \(setupPlayer.name) moves 3 coins onto \(setupPlayer.playerGender.possessivePronoun) field. \(setupPlayer.playerGender.pronoun) places \(setupPlayer.field.stashDescription)
                 """)
             waitForUserInput()
             print("\n====================================================================\n")
@@ -96,7 +96,7 @@ struct LCRGame {
         //start of turn stats
         print("""
             
-            It is \(currentTurnPlayer.name)'s turn. They currently have \(currentTurnPlayer.field.collectionOfCoins.count) coins in their field and must roll \(currentTurnPlayer.diceToRoll()) dice.
+            It is \(currentTurnPlayer.name)'s turn. \(currentTurnPlayer.playerGender.pronoun) currently has \(currentTurnPlayer.field.collectionOfCoins.count) coins in \(currentTurnPlayer.playerGender.possessivePronoun) field and must roll \(currentTurnPlayer.diceToRoll()) dice.
             
             """)
         
@@ -114,24 +114,24 @@ struct LCRGame {
                     print("\(currentTurnPlayer.name) rolled a '•'. Nothing happens!")
                     
                 case .centre:
-                    print("\(currentTurnPlayer.name) rolled a 'C'. They give up one coin to the centre! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    print("\(currentTurnPlayer.name) rolled a 'C'. \(currentTurnPlayer.playerGender.pronoun) gives up one coin to the centre! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
                     currentTurnPlayer.field.moveCoinsTo(destination: centrePot, howManyCoins: 1)
                     
                 case .left:
-                    print("\(currentTurnPlayer.name) rolled an 'L'. They give up one coin to \(players.getPlayerToTheLeft(of: currentTurnPlayer).name) on their left! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    print("\(currentTurnPlayer.name) rolled an 'L'. \(currentTurnPlayer.playerGender.pronoun) gives up one coin to \(players.getPlayerToTheLeft(of: currentTurnPlayer).name) on \(currentTurnPlayer.playerGender.possessivePronoun) left! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
                     currentTurnPlayer.field.moveCoinsTo(destination: players.getPlayerToTheLeft(of: currentTurnPlayer).field, howManyCoins: 1)
                     
                 case .right:
-                    print("\(currentTurnPlayer.name) rolled an 'R'. They give up one coin to \(players.getPlayerToTheRight(of: currentTurnPlayer).name) on their right! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
+                    print("\(currentTurnPlayer.name) rolled an 'R'. \(currentTurnPlayer.playerGender.pronoun) gives up one coin to \(players.getPlayerToTheRight(of: currentTurnPlayer).name) on \(currentTurnPlayer.playerGender.possessivePronoun) right! It's \(currentTurnPlayer.collection.collectionOfCoins[0].description).")
                     currentTurnPlayer.field.moveCoinsTo(destination: players.getPlayerToTheRight(of: currentTurnPlayer).field, howManyCoins: 1)
                 default:
-                    print("Something had gone wrong when rolling the die.")
+                    print("Something has gone wrong when rolling the die.")
                 }
             }
             
         }
         
-        print("\(currentTurnPlayer.name) now has \(currentTurnPlayer.field.collectionOfCoins.count) coins in their field.")
+        print("\(currentTurnPlayer.name) now has \(currentTurnPlayer.field.collectionOfCoins.count) coins in \(currentTurnPlayer.playerGender.possessivePronoun) field.")
         addDevider()
         
         
@@ -176,16 +176,16 @@ struct LCRGame {
         
         //declare winning stats
         print("""
-            \(winner.name) is the winner! They won the entire centre pot, which contains \(centrePot.stashDescription)
+            \(winner.name) is the winner! \(winner.playerGender.pronoun) won the entire centre pot, which contains \(centrePot.stashDescription)
             """)
         
         //give winnings
         centrePot.moveAllContentsTo(destination: winner.collection)
         winner.field.moveAllContentsTo(destination: winner.collection)
         
-        //print("""
-        // \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, they made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
-        // """)
+        print("""
+            \(winner.name) started with $\(winner.initialWealth), which means after taking the pot and the remaining coins on the field, \(winner.playerGender.pronoun) made a profit of $\(winner.collection.totalMonetaryValue - winner.initialWealth)!
+         """)
     }
     
     func waitForUserInput() {
@@ -201,13 +201,11 @@ struct LCRGame {
 
 //sample game
 
-var Liam = Player(collection: Stash(initialCoins: Coin.wealthyCollection), name: "Liam")
-var Julio = Player(collection: Stash(initialCoins: Coin.poorCollection), name: "Julio")
-var Gordon = Player(collection: Stash(initialCoins: Coin.standardCollection), name: "Mr. Gordon")
+var Liam = Player(collection: Stash(initialCoins: Coin.poorCollection), name: "Liam", gender: .male)
+var Taite = Player(collection: Stash(initialCoins: Coin.wealthyCollection), name: "Taite", gender: .female)
+var Annika = Player(collection: Stash(initialCoins: Coin.standardCollection), name: "Annika", gender: .female)
 
-var ourClass = FriendGroup(group: [Liam, Julio, Gordon])
+var gooblyGame = LCRGame(whoIsPlaying: FriendGroup(group: [Liam, Annika, Taite]))
 
-var epicShowdown = LCRGame(whoIsPlaying: ourClass)
-
-epicShowdown.playLCR()
+gooblyGame.playLCR()
 

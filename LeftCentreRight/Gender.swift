@@ -9,7 +9,7 @@
 import Foundation
 
 //enumeration for genders
-enum gender : String {
+enum Gender : String {
     
     //possible genders
     case male = "male", female = "female"

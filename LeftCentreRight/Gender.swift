@@ -17,8 +17,8 @@ enum Gender : String {
     //string literal for possesive pronouns
     var possessivePronoun : String {
         switch self {
-        case .male: return "his"
-        case .female: return "her"
+        case .male: return "His"
+        case .female: return "Her"
         }
     }
     

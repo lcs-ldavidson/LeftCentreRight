@@ -12,6 +12,7 @@
 		9E95DFB524199F9800D42477 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFB424199F9800D42477 /* main.swift */; };
 		9E95DFBC2419A04D00D42477 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFBB2419A04D00D42477 /* Coin.swift */; };
 		9E95DFBE2419AB4F00D42477 /* Stash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95DFBD2419AB4F00D42477 /* Stash.swift */; };
+		9EA3D366244AA7B100E51F62 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3D365244AA7B100E51F62 /* Gender.swift */; };
 		D333F7902419A23A009ECFB4 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333F78F2419A23A009ECFB4 /* Die.swift */; };
 		D333F7922419A273009ECFB4 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333F7912419A273009ECFB4 /* Side.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		9E95DFB424199F9800D42477 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9E95DFBB2419A04D00D42477 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		9E95DFBD2419AB4F00D42477 /* Stash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stash.swift; sourceTree = "<group>"; };
+		9EA3D365244AA7B100E51F62 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		D333F78F2419A23A009ECFB4 /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		D333F7912419A273009ECFB4 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				9E95DFBD2419AB4F00D42477 /* Stash.swift */,
 				9E3BD22F243FE14F008A31C5 /* Player.swift */,
 				9E3BD231243FE832008A31C5 /* FriendGroup.swift */,
+				9EA3D365244AA7B100E51F62 /* Gender.swift */,
 			);
 			path = LeftCentreRight;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				9E95DFB524199F9800D42477 /* main.swift in Sources */,
 				D333F7922419A273009ECFB4 /* Side.swift in Sources */,
 				D333F7902419A23A009ECFB4 /* Die.swift in Sources */,
+				9EA3D366244AA7B100E51F62 /* Gender.swift in Sources */,
 				9E3BD230243FE14F008A31C5 /* Player.swift in Sources */,
 				9E3BD232243FE832008A31C5 /* FriendGroup.swift in Sources */,
 				9E95DFBE2419AB4F00D42477 /* Stash.swift in Sources */,

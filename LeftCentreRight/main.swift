@@ -166,7 +166,7 @@ struct LCRGame {
         return doesItContain
     }
     
-    //adds a devider to make things easier to read
+    //adds adevider to make things easier to read
     func addDevider() {
         print("\n====================================================================\n")
     }

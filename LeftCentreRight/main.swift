@@ -147,6 +147,8 @@ struct LCRGame {
         //check if the list of players with coins only has one person in it, and if that player is you, you have won!
         if arrayOfPlayersContains(arrayToCheck: playersWithCoins, playerToCheckFor: currentTurnPlayer) && playersWithCoins.count == 1 {
             gameIsOngoing = false
+        } else if playersWithCoins.count == 0 {
+            gameIsOngoing = false
         }
         
         //pass the turn to the next player if current player did not just win

@@ -25,8 +25,8 @@ enum Gender : String {
     //string literal for pronouns
     var pronoun : String {
         switch self {
-        case .male: return "he"
-        case .female: return "she"
+        case .male: return "He"
+        case .female: return "She"
         }
     }
     

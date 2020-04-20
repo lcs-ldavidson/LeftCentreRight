@@ -62,7 +62,12 @@ struct LCRGame {
         
         for describingPlayer in players.group {
             print("""
-                \(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). \(describingPlayer.playerGender.possessivePronoun) stash is made up of \(describingPlayer.collection.stashDescription)
+                \(describingPlayer.name) has \(describingPlayer.collection.collectionOfCoins.count) coins worth a total of $\(describingPlayer.collection.totalMonetaryValue). \(describingPlayer.playerGender.possessivePronoun) stash is made up of
+                \(describingPlayer.collection.nickleCount()) nickels worth $0.05
+                \(describingPlayer.collection.dimeCount()) dimes worth $0.10
+                \(describingPlayer.collection.quarterCount()) quarters worth $0.25
+                \(describingPlayer.collection.loonieCount()) loonies worth $1.00
+                \(describingPlayer.collection.toonieCount()) toonies worth $2.00
                 """)
              waitForUserInput()
             print("\n====================================================================\n")
@@ -178,7 +183,12 @@ struct LCRGame {
         
         //declare winning stats
         print("""
-            \(winner.name) is the winner! \(winner.playerGender.pronoun) won the entire centre pot, which contains \(centrePot.stashDescription)
+            \(winner.name) is the winner! \(winner.playerGender.pronoun) won the entire centre pot, which contains
+            \(centrePot.nickleCount()) nickle(s) worth $0.05
+            \(centrePot.dimeCount()) dime(s) worth $0.10
+            \(centrePot.quarterCount()) quarter(s) worth $0.25
+            \(centrePot.loonieCount()) loonie(s) worth $1.00
+            \(centrePot.toonieCount()) toonie(s) worth $2.00
             """)
         
         //give winnings

@@ -28,7 +28,7 @@ class Player {
     }
     
     var initialWealth : Double
-    var playerGender : Gender
+    var playerGender : Gender 
     
     //initializer
     init(collection: Stash, name: String, gender: Gender) {

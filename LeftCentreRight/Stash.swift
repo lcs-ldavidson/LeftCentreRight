@@ -28,6 +28,7 @@ class Stash {
         return total
     }
     
+    
     //returns a description of each coin in the stash
     var stashDescription : String {
         var description = "\n"
@@ -39,6 +40,62 @@ class Stash {
         description += "Total worth: $\(totalMonetaryValue) \n"
         
         return description
+    }
+    
+    // Functions to check amount of coins for specific type
+    func nickleCount() -> Int {
+        var numberOfNickels = 0
+        let coinArray = collectionOfCoins
+        for index in coinArray {
+            if index == LeftCentreRight.Coin.nickel {
+                numberOfNickels += 1
+            }
+        }
+        return numberOfNickels
+    }
+    
+    func dimeCount() -> Int {
+        var numberOfDimes = 0
+        let coinArray = collectionOfCoins
+        for index in coinArray {
+            if index == LeftCentreRight.Coin.dime {
+                numberOfDimes += 1
+            }
+        }
+        return numberOfDimes
+    }
+    
+    func quarterCount() -> Int {
+        var numberOfQuarters = 0
+        let coinArray = collectionOfCoins
+        for index in coinArray {
+            if index == LeftCentreRight.Coin.quarter {
+                numberOfQuarters += 1
+            }
+        }
+        return numberOfQuarters
+    }
+    
+    func loonieCount() -> Int {
+        var numberOfloonies = 0
+        let coinArray = collectionOfCoins
+        for index in coinArray {
+            if index == LeftCentreRight.Coin.loonie {
+                numberOfloonies += 1
+            }
+        }
+        return numberOfloonies
+    }
+    
+    func toonieCount() -> Int {
+        var numberOfToonies = 0
+        let coinArray = collectionOfCoins
+        for index in coinArray {
+            if index == LeftCentreRight.Coin.toonie {
+                numberOfToonies += 1
+            }
+        }
+        return numberOfToonies
     }
     
     //check if this stash has more coins than another
